@@ -2659,8 +2659,9 @@ TcpSocketBase::SendPendingData (bool withAck)
           break;
         }
       NS_LOG_LOGIC ("TcpSocketBase " << this << " SendPendingData" <<
-                    " w " << w <<
+                    " availableWindow " << w <<
                     " rxwin " << m_rWnd <<
+                    " Window() " << Window() <<
                     " segsize " << m_tcb->m_segmentSize <<
                     " nextTxSeq " << m_tcb->m_nextTxSequence <<
                     " highestRxAck " << m_txBuffer->HeadSequence () <<

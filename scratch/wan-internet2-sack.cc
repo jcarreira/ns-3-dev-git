@@ -30,6 +30,7 @@ Author: Radhika Mittal
 #include "ns3/flow-monitor-helper.h"
 #include "ns3/point-to-point-layout-module.h"
 #include "ns3/seq-ts-header.h"
+#include "ns3/trace-helper.h"
 
 
 #define MAXPACKETS 100
@@ -609,9 +610,14 @@ int main (int argc, char *argv[])
     // configure the helper with right data rate and delay from the topology file
     for(int i = 0; i < LINKS; i++)
     {
+        char str[100];
+
+        //sprintf(str, "logs/tcp_log%d.tr", i);
+        //AsciiTraceHelper ascii;
+        //pointToPoint[i].EnablePcap("prefix");
+
         //setting link characteristics
         //pointToPoint[i].SetQueue("ns3::PriorityQueue");
-        char str[100];
         sprintf(str, "%dMbps", linkBandwidths[i]);
         pointToPoint[i].SetDeviceAttribute ("DataRate", StringValue (str));
         sprintf(str, "%dms", linkDelays[i]);
@@ -789,9 +795,13 @@ int main (int argc, char *argv[])
       FlowMonitorHelper flowmonHelper;
       flowmon = flowmonHelper.InstallAll ();*/
 
+    //PcapHelperForDevice helper;
+    //helper.EnablePcap("prefix", nodes);
+
     //AsciiTraceHelper ascii;
-    //pointToPoint.EnableAsciiAll(ascii.CreateFileStream("tcptopo.tr"));
-    //pointToPoint.EnablePcapAll("tcptopo");
+    //pointToPoint.EnableAsciiInternal(ascii.CreateFileStream("tcptopo.tr"));
+    PointToPointHelper pointToPoint2;
+    pointToPoint2.EnablePcapAll("tcptopo");
     Simulator::Stop(Seconds(endtime));
 
     std::cout << "Starting simulation" << std::endl;
