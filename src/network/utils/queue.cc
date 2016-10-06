@@ -71,6 +71,10 @@ Queue::GetTypeId (void)
                      "Number of bytes currently stored in the queue",
                      MakeTraceSourceAccessor (&Queue::m_nBytes),
                      "ns3::TracedValueCallback::Uint32")
+    .AddAttribute ("Id", "The id (unique integer) of this Queue.",
+                   UintegerValue (0),
+                   MakeUintegerAccessor (&Queue::m_id),
+                   MakeUintegerChecker<uint32_t> ()) 
   ;
   return tid;
 }
@@ -82,6 +86,7 @@ Queue::Queue() :
   m_nTotalReceivedPackets (0),
   m_nTotalDroppedBytes (0),
   m_nTotalDroppedPackets (0),
+  m_id(0),
   m_mode (QUEUE_MODE_PACKETS)
 {
   NS_LOG_FUNCTION (this);

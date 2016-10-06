@@ -263,6 +263,7 @@ private:
 
   uint32_t m_maxPackets;              //!< max packets in the queue
   uint32_t m_maxBytes;                //!< max bytes in the queue
+  uint32_t m_id;
   QueueMode m_mode;                   //!< queue mode (packets or bytes limited)
   DropCallback m_dropCallback;        //!< drop callback
 };

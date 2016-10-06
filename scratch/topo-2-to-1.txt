@@ -1,0 +1,14 @@
+# 2 to one setting
+# we have 4 nodes:
+# 1 receiver node, 1 senders and 1 switch
+# Indexes:
+# receiver = 1
+# Switch = 0
+# senders = 2
+# 10gbps and 6us latency
+# number of nodes and links follow
+4
+3
+0	1	10000	1
+0	2	10000	1
+0	3	10000	1
